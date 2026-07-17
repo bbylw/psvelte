@@ -85,13 +85,14 @@ export const categories = [
 2. 选择 **Pages -> Connect to Git** 并关联您的 GitHub 仓库 `bbylw/psvelte`。
 3. 框架预设（Framework preset）选择 **SvelteKit**。
 4. **【关键步骤】** 找到 **Build output directory（构建输出目录）**，将默认的 `.svelte-kit/cloudflare` 修改为 **`build`**。
-5. 点击 **Save and Deploy** 进行第一次构建即可。
+5. 点击 **Save and Deploy** 进行第一次构建。
+6. 构建成功后，在 Pages 详情页的 **Custom domains（自定义域）** 绑定您的域名 `psvelte.ndjp.net`。
 
 ### 2. GitHub Pages (自动化 Actions 部署 ⭐️)
-本项目已在 `.github/workflows/deploy.yml` 内置了 GitHub Actions 工作流。
+本项目已在 `.github/workflows/deploy.yml` 内置了 GitHub Actions 工作流与 `static/CNAME` 域名映射。
 1. 打开您的 GitHub 仓库设置：`https://github.com/bbylw/psvelte/settings/pages`。
 2. 将 **Build and deployment -> Source** 从 `Deploy from a branch` 切换为 **`GitHub Actions`**。
-3. 每次您推送代码到 `main` 分支时，GitHub 就会自动运行构建并将 `build/` 部署至 GitHub Pages。
+3. 每次您推送代码到 `main` 分支时，GitHub 就会自动运行构建并将 `build/` 部署至您的自定义域名 `psvelte.ndjp.net`。
 
 ### 3. Vercel
 1. 将代码推送至 GitHub 仓库。
@@ -112,4 +113,4 @@ export const categories = [
 如果您使用传统的静态存储桶：
 1. 本地运行 `npm run build` 进行打包。
 2. 将生成的 `build/` 目录中的所有文件直接上传到您配置好的对象存储桶根目录下。
-3. 在存储桶后台开启“静态网站托管”功能即可。
+3. 在存储桶后台开启“静态网站托管”功能，并绑定自定义域名即可。
