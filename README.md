@@ -75,63 +75,38 @@ export const categories = [
 
 ## 🌐 云端托管部署教程
 
-SvelteKit 默认使用 `@sveltejs/adapter-auto`。当您在各大主流云平台进行构建时，它会自动检测环境并安装适配器生成对应的服务。
+本项目已预先配置为 **纯静态站点生成 (SSG)** 模式（使用 `@sveltejs/adapter-static`），这能让您的导航站在所有平台上享受到最快速的加载速度与零服务器运行费用。
 
-### 方案 A：主流云平台（Vercel / Netlify / Cloudflare Pages）- 推荐 ⭐️
-这些平台对 SvelteKit 提供了零配置的原生支持：
+在打包构建时，项目会自动在根目录生成 **`build/`** 文件夹，里面包含了所有编译压缩好的静态 HTML、CSS、JS 文件。
 
-#### 1. Vercel
-1. 将项目代码推送至您的 GitHub / GitLab 仓库。
-2. 登录 [Vercel 官网](https://vercel.com/)，点击 **Add New -> Project**。
-3. 导入您的导航站仓库。
-4. 框架预设选择 **SvelteKit**（系统通常会自动检测到）。
-5. 点击 **Deploy** 即可，Vercel 会自动完成构建并为您生成免费域名。
-
-#### 2. Netlify
-1. 登录 [Netlify 官网](https://www.netlify.com/)，选择 **Add new site -> Import an existing project**。
-2. 关联您的 GitHub 账号并选择仓库。
-3. 构建命令设为 `npm run build`，发布目录选择 `.svelte-kit/output`（默认即可）。
-4. 点击 **Deploy site**。
-
-#### 3. Cloudflare Pages
-1. 登录 [Cloudflare 控制台](https://dash.cloudflare.com/)，进入 **Workers & Pages -> Create Application**。
-2. 选择 **Pages -> Connect to Git** 并关联您的 GitHub 仓库。
+### 1. Cloudflare Pages (推荐 ⭐️)
+本项目已在根目录内置了 `.node-version` 与 `.nvmrc`，Cloudflare Pages 会自动采用 Node.js 22。
+1. 登录 Cloudflare 控制台，进入 **Workers & Pages -> Create Application**。
+2. 选择 **Pages -> Connect to Git** 并关联您的 GitHub 仓库 `bbylw/psvelte`。
 3. 框架预设（Framework preset）选择 **SvelteKit**。
-4. 在环境变量（Environment variables）中，确保 `NODE_VERSION` 设置为 `18` 或以上版本。
-5. 点击 **Save and Deploy**。
+4. **【关键步骤】** 找到 **Build output directory（构建输出目录）**，将默认的 `.svelte-kit/cloudflare` 修改为 **`build`**。
+5. 点击 **Save and Deploy** 进行第一次构建。
+6. 构建成功后，在 Pages 详情页的 **Custom domains（自定义域）** 绑定您的域名 `psvelte.ndjp.net`。
 
----
+### 2. GitHub Pages (自动化 Actions 部署 ⭐️)
+本项目已在 `.github/workflows/deploy.yml` 内置了 GitHub Actions 工作流与 `static/CNAME` 域名映射。
+1. 打开您的 GitHub 仓库设置：`https://github.com/bbylw/psvelte/settings/pages`。
+2. 将 **Build and deployment -> Source** 从 `Deploy from a branch` 切换为 **`GitHub Actions`**。
+3. 每次您推送代码到 `main` 分支时，GitHub 就会自动运行构建并将 `build/` 部署至您的自定义域名 `psvelte.ndjp.net`。
 
-### 方案 B：纯静态托管（GitHub Pages / 腾讯云 COS / 阿里云 OSS）
-如果您需要将导航站打包为**纯静态 HTML/CSS 页面**（无 Node.js 服务运行，完全由浏览器端加载），请执行以下步骤转换为 SSG（静态站点生成）：
+### 3. Vercel
+1. 将代码推送至 GitHub 仓库，并在 [Vercel 官网](https://vercel.com/) 导入您的导航站仓库。
+2. 框架预设选择 **SvelteKit**，系统会自动识别静态生成配置并将构建产物 `build` 文件夹进行部署。
+3. 部署成功后，在项目 **Settings -> Domains** 页面绑定您的域名 `psvelte.ndjp.net`。
 
-#### 1. 更换为静态适配器
-在项目根目录下安装静态导出适配器：
-```sh
-npm install -D @sveltejs/adapter-static
-```
+### 4. Netlify
+1. 登录 Netlify，关联 GitHub 并选择项目。
+2. 构建命令设置为 `npm run build`。
+3. **【关键步骤】** 将发布目录（Publish directory）设置为 **`build`**。
+4. 点击 **Deploy site** 即可。
 
-#### 2. 修改打包配置
-打开根目录下的 [vite.config.js](file:///c:/Users/bbylw/Desktop/net/vite.config.js)，将引入的 `adapter-auto` 替换为 `adapter-static`：
-
-```diff
--import adapter from '@sveltejs/adapter-auto';
-+import adapter from '@sveltejs/adapter-static';
- import { sveltekit } from '@sveltejs/kit/vite';
- import { defineConfig } from 'vite';
-```
-
-#### 3. 开启预渲染
-新建一个路由布局配置文件，命名为 `src/routes/+layout.js`（如果尚未创建），在其中加入开启全站预渲染的配置：
-```javascript
-export const prerender = true;
-```
-
-#### 4. 打包与部署
-执行构建：
-```sh
-npm run build
-```
-执行后，项目根目录下会生成一个 **`build/`** 文件夹。该文件夹内包含了所有编译好的静态 HTML、CSS、JS 文件：
-- **GitHub Pages**：将 `build/` 目录下的内容推送到您的 GitHub Pages 仓库分支，或者配置 GitHub Actions 自动部署。
-- **对象存储 (COS/OSS)**：直接将 `build/` 目录中的所有文件上传到您的对象存储桶，并开启“静态网站托管”功能即可。
+### 5. 传统对象存储 (腾讯云 COS / 阿里云 OSS / 七牛云)
+如果您使用传统的静态存储桶：
+1. 本地运行 `npm run build` 进行打包。
+2. 将生成的 `build/` 目录中的所有文件直接上传到您配置好的对象存储桶根目录下。
+3. 在存储桶后台开启“静态网站托管”功能，并绑定自定义域名即可。
