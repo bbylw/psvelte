@@ -98,9 +98,9 @@ export const categories = [
 1. 将代码推送至 GitHub 仓库。
 2. 登录 [Vercel 官网](https://vercel.com/)，点击 **Add New -> Project**，导入您的 `psvelte` 仓库。
 3. **【构建参数配置】** 展开 **Build & Development Settings** 配置项：
-   - **Framework Preset（框架预设）**：选择 **SvelteKit**（Vercel 会自动识别静态适配器并将生成的静态网页部署为 Edge CDN 静态资源）。
+   - **Framework Preset（框架预设）**：选择 **SvelteKit**。
    - **Build Command（构建命令）**：保持默认的 `npm run build`。
-   - **Output Directory（输出目录）**：保持默认（系统会自动识别 `@sveltejs/adapter-static` 的配置）。*注：如果框架预设选择了 **Other**，则需要将该输出目录手动设置为 **`build`**。*
+   - **Output Directory（输出目录）**：**【关键步骤】** 必须开启右侧的 **OVERRIDE（覆盖）** 选项，并将输入框中的路径修改为 **`build`**（因为静态适配器编译后的页面存放于 `build` 文件夹中）。
 4. 点击 **Deploy** 进行自动化部署即可。
 
 ### 4. Netlify
