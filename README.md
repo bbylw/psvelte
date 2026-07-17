@@ -95,9 +95,20 @@ export const categories = [
 3. 每次您推送代码到 `main` 分支时，GitHub 就会自动运行构建并将 `build/` 部署至您的自定义域名 `psvelte.ndjp.net`。
 
 ### 3. Vercel
-1. 将代码推送至 GitHub 仓库，并在 [Vercel 官网](https://vercel.com/) 导入您的导航站仓库。
-2. 框架预设选择 **SvelteKit**，系统会自动识别静态生成配置并将构建产物 `build` 文件夹进行部署。
-3. 部署成功后，在项目 **Settings -> Domains** 页面绑定您的域名 `psvelte.ndjp.net`。
+1. 将代码推送至 GitHub 仓库。
+2. 登录 [Vercel 官网](https://vercel.com/)，点击 **Add New -> Project**，导入您的 `psvelte` 仓库。
+3. **【构建参数配置】** 展开 **Build & Development Settings** 配置项：
+   - **Framework Preset（框架预设）**：选择 **SvelteKit**（Vercel 会自动识别静态适配器并将生成的静态网页部署为 Edge CDN 静态资源）。
+   - **Build Command（构建命令）**：保持默认的 `npm run build`。
+   - **Output Directory（输出目录）**：保持默认（系统会自动识别 `@sveltejs/adapter-static` 的配置）。*注：如果框架预设选择了 **Other**，则需要将该输出目录手动设置为 **`build`**。*
+4. 点击 **Deploy** 进行自动化部署。
+5. **【绑定自定义域名】**：
+   - 部署成功后，进入该项目的后台，点击 **Settings -> Domains**。
+   - 在输入框中输入您的自定义域名 `psvelte.ndjp.net` 并点击 **Add**。
+   - 按照 Vercel 页面上的提示，前往您的 DNS 解析商（如 Cloudflare 等）处为您的域名添加一条 `CNAME` 解析记录：
+     - **记录类型**：`CNAME`
+     - **主机记录**：`psvelte`
+     - **记录值**：`cname.vercel-dns.com`
 
 ### 4. Netlify
 1. 登录 Netlify，关联 GitHub 并选择项目。
