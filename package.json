@@ -3,6 +3,10 @@
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",
+	"imports": {
+		"#lib": "./src/lib/index.js",
+		"#lib/*": "./src/lib/*"
+	},
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
@@ -12,15 +16,15 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch"
 	},
 	"devDependencies": {
-		"@emnapi/core": "^1.11.2",
-		"@emnapi/runtime": "^1.11.2",
-		"@sveltejs/adapter-auto": "^7.0.1",
-		"@sveltejs/adapter-static": "^3.0.10",
-		"@sveltejs/kit": "^2.69.3",
-		"@sveltejs/vite-plugin-svelte": "^7.2.0",
-		"svelte": "^5.56.6",
-		"svelte-check": "^4.7.3",
+		"@emnapi/core": "^1.11.3",
+		"@emnapi/runtime": "^1.11.3",
+		"@sveltejs/adapter-auto": "^8.0.0",
+		"@sveltejs/adapter-static": "^4.0.0",
+		"@sveltejs/kit": "^3.0.1",
+		"@sveltejs/vite-plugin-svelte": "^7.3.1",
+		"svelte": "^5.57.2",
+		"svelte-check": "^4.7.6",
 		"typescript": "^6.0.3",
-		"vite": "^8.1.5"
+		"vite": "^8.3.4"
 	}
 }

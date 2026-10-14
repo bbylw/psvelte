@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
-	import { pushState } from '$app/navigation';
-	import { categories } from '$lib/navData.js';
+	import { goto } from '$app/navigation';
+	import { categories } from '#lib/navData.js';
 
 	let activeHash = $state('#ai-search');
 	let searchQuery = $state('');
@@ -47,7 +47,7 @@
 		const targetElement = document.getElementById(targetId);
 		if (targetElement) {
 			targetElement.scrollIntoView({ behavior: 'smooth' });
-			pushState(`#${targetId}`, {});
+			goto(`#${targetId}`, { shallow: true });
 		}
 	}
 
