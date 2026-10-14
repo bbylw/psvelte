@@ -1,12 +1,48 @@
 # WebNav Hub (SvelteKit 版导航站)
 
-这是一个经过现代化重构的高性能单页书签导航站（WebNav Hub），技术栈已升级为 **Svelte 5** 和 **SvelteKit 2**，同时保留了原始网站精致的暗黑橙色（Orange Accent）视觉风格，并内置了高颜值的实时搜索过滤功能。
+这是一个经过现代化重构的高性能单页书签导航站（WebNav Hub），技术栈已全面升级至 **Svelte 5**、**SvelteKit 3** 与 **Vite 8**，同时保留了精致的暗黑橙色（Orange Accent）视觉风格，并内置了实时搜索与平滑分类锚点跳转功能。
+
+---
+
+## 🚀 技术栈与特性
+
+- **前端框架**：[Svelte 5](https://svelte.dev/)（全面采用 Runes 响应式状态模型）
+- **全栈框架**：[SvelteKit 3](https://svelte.dev/docs/kit)（支持标准 `#lib` 子路径导入与现代化路由）
+- **构建工具**：[Vite 8](https://vite.dev/)（内置 Rolldown 引擎，极速 HMR 与模块打包）
+- **静态适配**：`@sveltejs/adapter-static 4`（纯静态 SSG 模式，零服务器成本）
+- **类型检查**：`svelte-check 4` + TypeScript 6
+- **图标体系**：FontAwesome 7
+- **运行环境**：Node.js >= 22.17
+- **自动化工作流**：GitHub Actions 最新版本（`checkout@v7`、`setup-node@v7`、`deploy-pages@v5` 等）
+
+---
+
+## 💻 本地开发
+
+```bash
+# 1. 克隆仓库并安装依赖
+git clone https://github.com/<your-username>/psvelte.git
+cd psvelte
+npm install
+
+# 2. 启动本地开发服务器
+npm run dev
+
+# 3. 运行类型与语法检查
+npm run check
+
+# 4. 构建生产环境静态资源 (输出至 build/ 目录)
+npm run build
+
+# 5. 本地预览生产构建
+npm run preview
+```
 
 ---
 
 ## 📂 内容配置指南（如何增减网址与分类）
 
-所有的分类与网址数据都统一保存在 [src/lib/navData.js](file:///c:/Users/bbylw/Desktop/net/src/lib/navData.js) 中，您无需修改任何 HTML 或 Svelte 页面代码，只需编辑该文件即可管理站点内容。
+所有的分类与网址数据都统一保存在 [src/lib/navData.js](src/lib/navData.js) 中，您无需修改任何 HTML 或 Svelte 页面代码，只需编辑该文件即可管理站点内容。
 
 数据结构为：
 ```javascript
@@ -89,10 +125,10 @@ export const categories = [
 6. 构建成功后，在 Pages 详情页的 **Custom domains（自定义域）** 绑定您的域名 `your-domain.com`。
 
 ### 2. GitHub Pages (自动化 Actions 部署 ⭐️)
-本项目已在 `.github/workflows/deploy.yml` 内置了 GitHub Actions 工作流与 `static/CNAME` 域名映射。
+本项目已在 `.github/workflows/deploy.yml` 内置了最新的 GitHub Actions 自动化工作流与 Node 22 环境配置。
 1. 打开您的 GitHub 仓库设置：`https://github.com/<your-username>/<your-repo>/settings/pages`。
 2. 将 **Build and deployment -> Source** 从 `Deploy from a branch` 切换为 **`GitHub Actions`**。
-3. 每次您推送代码到 `main` 分支时，GitHub 就会自动运行构建并将 `build/` 部署至您的自定义域名 `your-domain.com`。
+3. 每次您推送代码到 `main` 分支时，GitHub 就会自动运行构建并将 `build/` 部署至 GitHub Pages。
 
 ### 3. Vercel
 1. 将代码推送至 GitHub 仓库。
@@ -100,7 +136,7 @@ export const categories = [
 3. **【构建参数配置】** 展开 **Build & Development Settings** 配置项：
    - **Framework Preset（框架预设）**：选择 **SvelteKit**。
    - **Build Command（构建命令）**：保持默认的 `npm run build`。
-   - **Output Directory（输出目录）**：**【关键步骤】** 必须开启右侧的 **OVERRIDE（覆盖）** 选项，并将输入框中的路径修改为 **`build`**（因为静态适配器编译后的页面存放于 `build` 文件夹中）。
+   - **Output Directory（输出目录）**：**【关键步骤】** 开启右侧的 **OVERRIDE（覆盖）** 选项，并将输入框中的路径修改为 **`build`**（因为静态适配器编译后的页面存放于 `build` 文件夹中）。
 4. 点击 **Deploy** 进行自动化部署即可。
 
 ### 4. Netlify
