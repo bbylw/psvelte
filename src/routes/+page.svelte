@@ -9,10 +9,13 @@
 	// Reactive filtering of categories and links based on the search query
 	let filteredCategories = $derived(
 		categories.map(category => {
-			const filteredLinks = category.links.filter(link => 
-				link.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-				link.url.toLowerCase().includes(searchQuery.toLowerCase())
-			);
+			const filteredLinks = category.links.filter(link => {
+				const linkName = link.name || link.title || '';
+				return (
+					linkName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+					link.url.toLowerCase().includes(searchQuery.toLowerCase())
+				);
+			});
 			return { ...category, links: filteredLinks };
 		}).filter(category => category.links.length > 0)
 	);
@@ -113,9 +116,9 @@
 				<div class="link-grid">
 					{#each category.links as link}
 						<div class="link-card">
-							<a href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.title}></a>
+							<a href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.name || link.title}></a>
 							<i class={link.icon}></i>
-							<h3>{link.title}</h3>
+							<h3>{link.name || link.title}</h3>
 						</div>
 					{/each}
 				</div>
