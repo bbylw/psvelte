@@ -970,6 +970,12 @@ export const categories = [
         "icon": "fa-solid fa-globe"
       },
       {
+        "name": "nssnap免费域名",
+        "title": "nssnap免费域名",
+        "url": "https://nssnap.com/",
+        "icon": "fa-solid fa-globe"
+      },
+      {
         "name": "PinMe",
         "title": "PinMe",
         "url": "https://pinme.eth.limo/",
