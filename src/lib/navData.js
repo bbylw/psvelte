@@ -980,6 +980,12 @@ export const categories = [
         "title": "PinMe",
         "url": "https://pinme.eth.limo/",
         "icon": "fa-solid fa-thumbtack"
+      },
+      {
+        "name": "openverse",
+        "title": "openverse",
+        "url": "https://openverse.org/",
+        "icon": "fa-brands fa-creative-commons"
       }
     ]
   },
