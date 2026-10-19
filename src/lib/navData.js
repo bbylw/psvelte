@@ -314,6 +314,12 @@ export const categories = [
         "title": "bolt.new",
         "url": "https://bolt.new/",
         "icon": "fa-solid fa-bolt"
+      },
+      {
+        "name": "Artificial Analysis",
+        "title": "Artificial Analysis",
+        "url": "https://artificialanalysis.ai",
+        "icon": "fa-solid fa-chart-line"
       }
     ]
   },
