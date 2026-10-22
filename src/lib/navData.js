@@ -320,6 +320,12 @@ export const categories = [
         "title": "Artificial Analysis",
         "url": "https://artificialanalysis.ai",
         "icon": "fa-solid fa-chart-line"
+      },
+      {
+        "name": "perchai.app",
+        "title": "perchai.app",
+        "url": "https://www.perchai.app/",
+        "icon": "fa-solid fa-crow"
       }
     ]
   },
