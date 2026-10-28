@@ -8,12 +8,12 @@
 
 - **前端框架**：[Svelte 5](https://svelte.dev/)（全面采用 Runes 响应式状态模型）
 - **全栈框架**：[SvelteKit 3](https://svelte.dev/docs/kit)（支持标准 `#lib` 子路径导入与现代化路由）
-- **构建工具**：[Vite 8](https://vite.dev/)（内置 Rolldown 引擎，极速 HMR 与模块打包）
+- **构建工具**：[Vite 8](https://vite.dev/)（极速 HMR 与现代化打包）
+- **包管理器与运行时**：[Bun](https://bun.sh/) >= 1.4.0（超高速 JavaScript/TypeScript 运行时与包管理工具）
 - **静态适配**：`@sveltejs/adapter-static 4`（纯静态 SSG 模式，零服务器成本）
-- **类型检查**：`svelte-check 4` + TypeScript 6
+- **类型检查**：`svelte-check 4` + TypeScript 6 + `@types/bun`
 - **图标体系**：FontAwesome 7
-- **运行环境**：Node.js >= 22.17
-- **自动化工作流**：GitHub Actions 最新版本（`checkout@v7`、`setup-node@v7`、`deploy-pages@v5` 等）
+- **自动化工作流**：GitHub Actions 最新版本（`checkout@v7`、`oven-sh/setup-bun@v2`、`deploy-pages@v5` 等）
 
 ---
 
@@ -23,19 +23,19 @@
 # 1. 克隆仓库并安装依赖
 git clone https://github.com/<your-username>/psvelte.git
 cd psvelte
-npm install
+bun install
 
 # 2. 启动本地开发服务器
-npm run dev
+bun run dev
 
 # 3. 运行类型与语法检查
-npm run check
+bun run check
 
 # 4. 构建生产环境静态资源 (输出至 build/ 目录)
-npm run build
+bun run build
 
 # 5. 本地预览生产构建
-npm run preview
+bun run preview
 ```
 
 ---
@@ -116,37 +116,38 @@ export const categories = [
 在打包构建时，项目会自动在根目录生成 **`build/`** 文件夹，里面包含了所有编译压缩好的静态 HTML、CSS、JS 文件。
 
 ### 1. Cloudflare Pages (推荐 ⭐️)
-本项目已在根目录内置了 `.node-version` 与 `.nvmrc`，Cloudflare Pages 会自动采用 Node.js 22。
 1. 登录 Cloudflare 控制台，进入 **Workers & Pages -> Create Application**。
 2. 选择 **Pages -> Connect to Git** 并关联您的 GitHub 仓库 `<your-username>/<your-repo>`。
 3. 框架预设（Framework preset）选择 **SvelteKit**。
-4. **【关键步骤】** 找到 **Build output directory（构建输出目录）**，将默认的 `.svelte-kit/cloudflare` 修改为 **`build`**。
-5. 点击 **Save and Deploy** 进行第一次构建。
-6. 构建成功后，在 Pages 详情页的 **Custom domains（自定义域）** 绑定您的域名 `your-domain.com`。
+4. 构建命令（Build command）设置为 **`bun run build`**（若使用 Bun 镜像或设置环境变量 `BUN_VERSION=latest`）。
+5. **【关键步骤】** 找到 **Build output directory（构建输出目录）**，将默认的 `.svelte-kit/cloudflare` 修改为 **`build`**。
+6. 点击 **Save and Deploy** 进行第一次构建。
+7. 构建成功后，在 Pages 详情页的 **Custom domains（自定义域）** 绑定您的域名 `your-domain.com`。
 
 ### 2. GitHub Pages (自动化 Actions 部署 ⭐️)
-本项目已在 `.github/workflows/deploy.yml` 内置了最新的 GitHub Actions 自动化工作流与 Node 22 环境配置。
+本项目已在 `.github/workflows/deploy.yml` 内置了最新的 GitHub Actions 自动化工作流与 Bun 环境配置。
 1. 打开您的 GitHub 仓库设置：`https://github.com/<your-username>/<your-repo>/settings/pages`。
 2. 将 **Build and deployment -> Source** 从 `Deploy from a branch` 切换为 **`GitHub Actions`**。
-3. 每次您推送代码到 `main` 分支时，GitHub 就会自动运行构建并将 `build/` 部署至 GitHub Pages。
+3. 每次您推送代码到 `main` 分支时，GitHub 就会自动运行 Bun 环境构建并将 `build/` 部署至 GitHub Pages。
 
 ### 3. Vercel
 1. 将代码推送至 GitHub 仓库。
 2. 登录 [Vercel 官网](https://vercel.com/)，点击 **Add New -> Project**，导入您的导航站仓库。
 3. **【构建参数配置】** 展开 **Build & Development Settings** 配置项：
    - **Framework Preset（框架预设）**：选择 **SvelteKit**。
-   - **Build Command（构建命令）**：保持默认的 `npm run build`。
+   - **Install Command（安装命令）**：选择/覆盖为 `bun install`。
+   - **Build Command（构建命令）**：选择/覆盖为 `bun run build`。
    - **Output Directory（输出目录）**：**【关键步骤】** 开启右侧的 **OVERRIDE（覆盖）** 选项，并将输入框中的路径修改为 **`build`**（因为静态适配器编译后的页面存放于 `build` 文件夹中）。
 4. 点击 **Deploy** 进行自动化部署即可。
 
 ### 4. Netlify
 1. 登录 Netlify，关联 GitHub 并选择项目。
-2. 构建命令设置为 `npm run build`。
+2. 构建命令设置为 `bun run build`。
 3. **【关键步骤】** 将发布目录（Publish directory）设置为 **`build`**。
 4. 点击 **Deploy site** 即可。
 
 ### 5. 传统对象存储 (腾讯云 COS / 阿里云 OSS / 七牛云)
 如果您使用传统的静态存储桶：
-1. 本地运行 `npm run build` 进行打包。
+1. 本地运行 `bun run build` 进行打包。
 2. 将生成的 `build/` 目录中的所有文件直接上传到您配置好的对象存储桶根目录下。
 3. 在存储桶后台开启“静态网站托管”功能，并绑定自定义域名即可。

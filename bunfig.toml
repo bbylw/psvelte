@@ -1,0 +1,11 @@
+# Bun Configuration
+# https://bun.sh/docs/runtime/bunfig
+
+[install]
+# Prefer reproducible lockfile behavior
+lockfile = true
+
+[test]
+# Test runner configuration
+root = "."
+
