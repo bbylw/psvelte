@@ -340,10 +340,10 @@ export const categories = [
         "icon": "fa-brands fa-facebook"
       },
       {
-        "name": "Twitter",
-        "title": "Twitter",
-        "url": "https://x.com/",
-        "icon": "fa-brands fa-twitter"
+        "name": "F-Droid",
+        "title": "F-Droid",
+        "url": "https://f-droid.org/",
+        "icon": "fa-brands fa-android"
       },
       {
         "name": "推特视频下载",
@@ -394,10 +394,10 @@ export const categories = [
         "icon": "fa-solid fa-share-from-square"
       },
       {
-        "name": "爆米花视频",
-        "title": "爆米花视频",
-        "url": "https://goingbus.com/",
-        "icon": "fa-brands fa-n"
+        "name": "apkmirror",
+        "title": "apkmirror",
+        "url": "https://www.apkmirror.com/",
+        "icon": "fa-brands fa-android"
       },
       {
         "name": "Reddit",
