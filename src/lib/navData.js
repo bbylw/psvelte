@@ -988,6 +988,12 @@ export const categories = [
         "icon": "fa-solid fa-globe"
       },
       {
+        "name": "devs.surf 免费域名",
+        "title": "devs.surf 免费域名",
+        "url": "https://devs.surf/",
+        "icon": "fa-solid fa-water"
+      },
+      {
         "name": "PinMe",
         "title": "PinMe",
         "url": "https://pinme.eth.limo/",
