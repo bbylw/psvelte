@@ -208,9 +208,9 @@ export const categories = [
         "icon": "fa-solid fa-heart-pulse"
       },
       {
-        "name": "letta-code",
-        "title": "letta-code",
-        "url": "https://docs.letta.com/",
+        "name": "agnes-ai",
+        "title": "agnes-ai",
+        "url": "https://agnes-ai.com/",
         "icon": "fa-solid fa-code"
       },
       {
@@ -318,7 +318,7 @@ export const categories = [
       {
         "name": "Artificial Analysis",
         "title": "Artificial Analysis",
-        "url": "https://artificialanalysis.ai",
+        "url": "https://artificialanalysis.ai/",
         "icon": "fa-solid fa-chart-line"
       },
       {
@@ -331,13 +331,13 @@ export const categories = [
   },
   {
     "id": "social",
-    "title": "社交媒体",
+    "title": "托管社交",
     "links": [
       {
-        "name": "Facebook",
-        "title": "Facebook",
-        "url": "https://www.facebook.com",
-        "icon": "fa-brands fa-facebook"
+        "name": "wasmer边缘计算",
+        "title": "wasmer边缘计算",
+        "url": "https://wasmer.io/",
+        "icon": "fa-regular fa-cloud"
       },
       {
         "name": "F-Droid",
@@ -370,10 +370,10 @@ export const categories = [
         "icon": "fa-solid fa-d"
       },
       {
-        "name": "railway",
-        "title": "railway",
-        "url": "https://railway.com/",
-        "icon": "fa-solid fa-archway"
+        "name": "surge",
+        "title": "surge",
+        "url": "https://surge.sh/",
+        "icon": "fa-brands fa-css"
       },
       {
         "name": "vercel",
@@ -478,9 +478,9 @@ export const categories = [
         "icon": "fa-solid fa-location-dot"
       },
       {
-        "name": "短链",
-        "title": "短链",
-        "url": "https://d.186404.xyz/",
+        "name": "privatebin在线粘贴板",
+        "title": "privatebin在线粘贴板",
+        "url": "https://privatebin.net/",
         "icon": "fa-solid fa-link"
       },
       {
@@ -520,16 +520,16 @@ export const categories = [
         "icon": "fa-solid fa-book"
       },
       {
-        "name": "临时邮箱",
-        "title": "临时邮箱",
-        "url": "https://email.ml/",
+        "name": "SenseNova Studio信息图",
+        "title": "SenseNova Studio信息图",
+        "url": "https://unify.light-ai.top/",
         "icon": "fa-solid fa-envelope"
       },
       {
-        "name": "A姐",
-        "title": "A姐",
-        "url": "https://www.ahhhhfs.com/",
-        "icon": "fa-solid fa-blog"
+        "name": "vercel-drop",
+        "title": "vercel-drop",
+        "url": "https://vercel.com/drop",
+        "icon": "fa-solid fa-droplet"
       },
       {
         "name": "IP查询",
@@ -646,10 +646,10 @@ export const categories = [
         "icon": "fa-solid fa-envelopes-bulk"
       },
       {
-        "name": "github文件加速",
-        "title": "github文件加速",
-        "url": "https://gb.w404.nyc.mn/",
-        "icon": "fa-brands fa-github"
+        "name": "objectremover去水印",
+        "title": "objectremover去水印",
+        "url": "https://www.objectremover.com/",
+        "icon": "fa-solid fa-object-group"
       },
       {
         "name": "hostryDNS域名托管",
@@ -706,9 +706,9 @@ export const categories = [
         "icon": "fa-solid fa-file-pdf"
       },
       {
-        "name": "free-proxy",
-        "title": "free-proxy",
-        "url": "http://free-proxy.cz/en/",
+        "name": "supabase免费数据库",
+        "title": "supabase免费数据库",
+        "url": "https://supabase.com/",
         "icon": "fa-brands fa-internet-explorer"
       },
       {
@@ -736,9 +736,9 @@ export const categories = [
         "icon": "fa-solid fa-server"
       },
       {
-        "name": "hostuno",
-        "title": "hostuno",
-        "url": "https://www.hostuno.com/",
+        "name": "colocrossing云服务vps",
+        "title": "colocrossing云服务vps",
+        "url": "https://www.colocrossing.com/",
         "icon": "fa-solid fa-server"
       },
       {
@@ -910,9 +910,9 @@ export const categories = [
         "icon": "fa-solid fa-copy"
       },
       {
-        "name": "claw容器",
-        "title": "claw容器",
-        "url": "https://claw.cloud/",
+        "name": "KataBump免费域名",
+        "title": "KataBump免费域名",
+        "url": "https://katabump.com/",
         "icon": "fa-solid fa-cloud"
       },
       {
@@ -1006,10 +1006,16 @@ export const categories = [
         "icon": "fa-solid fa-thumbtack"
       },
       {
-        "name": "openverse",
-        "title": "openverse",
+        "name": "Openverse",
+        "title": "Openverse",
         "url": "https://openverse.org/",
         "icon": "fa-brands fa-creative-commons"
+      },
+      {
+        "name": "黑客书架",
+        "title": "黑客书架",
+        "url": "https://hackerbooks.qiaomu.ai/",
+        "icon": "fa-solid fa-book-bookmark"
       }
     ]
   },
