@@ -994,6 +994,12 @@ export const categories = [
         "icon": "fa-solid fa-water"
       },
       {
+        "name": "devs.li 免费域名",
+        "title": "devs.li 免费域名",
+        "url": "https://devs.li/",
+        "icon": "fa-solid fa-code"
+      },
+      {
         "name": "Zerexa Domains 免费域名",
         "title": "Zerexa Domains 免费域名",
         "url": "https://nic.fj.kg/",
