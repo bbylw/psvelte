@@ -280,6 +280,12 @@ export const categories = [
         "icon": "fa-solid fa-code"
       },
       {
+        "name": "deepai",
+        "title": "deepai",
+        "url": "https://deepai.org/",
+        "icon": "fa-solid fa-brain"
+      },
+      {
         "name": "硅基流动",
         "title": "硅基流动",
         "url": "https://siliconflow.cn/",
