@@ -4,6 +4,12 @@ export const categories = [
     "title": "Ai搜索",
     "links": [
       {
+        "name": "agent-qa",
+        "title": "agent-qa",
+        "url": "https://vostride.com",
+        "icon": "fa-solid fa-robot"
+      },
+      {
         "name": "智谱清言",
         "title": "智谱清言",
         "url": "https://chatglm.cn/",
