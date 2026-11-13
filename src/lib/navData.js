@@ -202,10 +202,10 @@ export const categories = [
         "icon": "fa-brands fa-x-twitter"
       },
       {
-        "name": "pce计算",
-        "title": "pce计算",
-        "url": "https://ascvdpce.186404.xyz/",
-        "icon": "fa-solid fa-heart-pulse"
+        "name": "instabox",
+        "title": "instabox",
+        "url": "https://instabox.sh/",
+        "icon": "fa-solid fa-box"
       },
       {
         "name": "agnes-ai",
