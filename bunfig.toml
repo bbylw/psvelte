@@ -1,9 +1,17 @@
 # Bun Configuration
 # https://bun.sh/docs/runtime/bunfig
 
+# Enable memory-saving GC mode
+smol = true
+
+[run]
+# Execute local node_modules/.bin CLIs directly on Bun runtime
+bun = true
+
 [install]
 # Prefer reproducible lockfile behavior
 lockfile = true
+auto = "disable"
 
 [test]
 # Test runner configuration
