@@ -220,10 +220,10 @@ export const categories = [
         "icon": "fa-solid fa-v"
       },
       {
-        "name": "cto.new",
-        "title": "cto.new",
-        "url": "https://cto.new/",
-        "icon": "fa-solid fa-v"
+        "name": "Duck.ai",
+        "title": "Duck.ai",
+        "url": "https://duck.ai/",
+        "icon": "fa-solid fa-dove"
       },
       {
         "name": "deepseek",
