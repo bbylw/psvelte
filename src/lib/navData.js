@@ -268,9 +268,9 @@ export const categories = [
         "icon": "fa-solid fa-code"
       },
       {
-        "name": "codebuff",
-        "title": "codebuff",
-        "url": "https://www.codebuff.com/",
+        "name": "freebuff",
+        "title": "freebuff",
+        "url": "https://freebuff.com/",
         "icon": "fa-solid fa-robot"
       },
       {
@@ -280,8 +280,8 @@ export const categories = [
         "icon": "fa-solid fa-code"
       },
       {
-        "name": "deepai",
-        "title": "deepai",
+        "name": "DeepAI",
+        "title": "DeepAI",
         "url": "https://deepai.org/",
         "icon": "fa-solid fa-brain"
       },
