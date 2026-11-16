@@ -394,6 +394,12 @@ export const categories = [
         "icon": "fa-brands fa-n"
       },
       {
+        "name": "cloudzyro",
+        "title": "cloudzyro",
+        "url": "https://cloudzyro.com/",
+        "icon": "fa-solid fa-cloud"
+      },
+      {
         "name": "savefrom",
         "title": "savefrom",
         "url": "https://zh.savefrom.net/",
