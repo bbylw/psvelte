@@ -12,8 +12,26 @@
 - **包管理器与运行时**：[Bun](https://bun.sh/) >= 1.4.0（超高速 JavaScript/TypeScript 运行时与包管理工具）
 - **静态适配**：`@sveltejs/adapter-static 4`（纯静态 SSG 模式，零服务器成本）
 - **类型检查**：`svelte-check 4` + TypeScript 6 + `@types/bun`
-- **图标体系**：FontAwesome 7
+- **图标体系**：FontAwesome 7（通过 jsDelivr CDN 加载并启用 `sha384` 子资源完整性 SRI 校验）
+- **现代 Web 标准**：引入并遵循 [Modern Web Guidance](https://github.com/GoogleChrome/modern-web-guidance)（涵盖现代 HTML/CSS、性能、无障碍、安全与动效最佳实践）
 - **自动化工作流**：GitHub Actions 最新版本（`checkout@v7`、`oven-sh/setup-bun@v2`、`deploy-pages@v5` 等）
+
+---
+
+## ✨ 现代 Web 最佳实践（Modern Web Guidance）
+
+本项目遵循 Google Chrome 团队维护的 [modern-web-guidance](https://github.com/GoogleChrome/modern-web-guidance) 指南，在保持暗黑橙色 UI 视觉不变的前提下实现了以下工程与平台能力优化：
+
+- **子资源安全与网络提示**：外部 CDN 样式表配置 `integrity="sha384-..."`、`crossorigin="anonymous"` 与 `referrerpolicy="no-referrer"`，配合文档级 `Referrer-Policy` 元标签及 `preconnect` 预连接。
+- **渲染性能优化**：对首屏外分类区块按需应用 `content-visibility: auto` 与 `contain-intrinsic-block-size`，跳过不可见子树的初始布局与绘制开销。
+- **原生 Scrollspy 导航**：基于 `scroll-target-group: auto` 与 `:target-current` 实现零 JS 滚动高亮及 `aria-current` 状态同步，并内置 `IntersectionObserver` 降级兼容。
+- **无障碍与键盘体验**：提供跳转至主内容的 Skip Link、`<search>` 地标与 `<input type="search">`、防抖 `aria-live="polite"` 搜索结果播报、IME 安全的 `Escape` 清空、`<ul role="list">` 网格语义、`:focus-visible` 焦点环及 Windows 高对比度模式（`forced-colors: active`）适配。
+- **系统偏好尊重**：声明 `color-scheme: dark` 与 `<meta name="text-scale" content="scale" />`，移除根字号覆写并基于 `em` 断点响应系统文本缩放；使用独立变换属性（`translate` / `scale`）并在 `@media (prefers-reduced-motion: no-preference)` 内启用空间动效与平滑滚动。
+
+```bash
+# 运行现代 Web 规范静态扫描
+bunx modern-web-guidance@latest legacy-scan src
+```
 
 ---
 
