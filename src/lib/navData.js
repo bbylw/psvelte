@@ -1024,6 +1024,12 @@ export const categories = [
         "icon": "fa-solid fa-thumbtack"
       },
       {
+        "name": "sms24免费接码",
+        "title": "sms24免费接码",
+        "url": "https://sms24.me/",
+        "icon": "fa-solid fa-comment-sms"
+      },
+      {
         "name": "Openverse",
         "title": "Openverse",
         "url": "https://openverse.org/",
