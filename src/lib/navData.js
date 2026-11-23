@@ -1012,6 +1012,12 @@ export const categories = [
         "icon": "fa-solid fa-code"
       },
       {
+        "name": "ipv64",
+        "title": "ipv64",
+        "url": "https://ipv64.net/",
+        "icon": "fa-solid fa-server"
+      },
+      {
         "name": "Zerexa Domains 免费域名",
         "title": "Zerexa Domains 免费域名",
         "url": "https://nic.fj.kg/",
